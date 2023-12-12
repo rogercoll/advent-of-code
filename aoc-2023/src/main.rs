@@ -9,12 +9,13 @@ type PartFn = fn(String) -> String;
 
 fn main() {
     let fns: IndexMap<usize, [PartFn; 2]> = IndexMap::from([
-        (1, [days::day1::part1, days::day1::part2]),
-        (2, [days::day2::part1, days::day2::part2]),
-        (3, [days::day3::part1, days::day3::part2]),
-        (4, [days::day4::part1, days::day4::part2]),
-        (5, [days::day5::part1, days::day5::part2]),
-        (6, [days::day6::part1, days::day6::part2]),
+        // (1, [days::day1::part1, days::day1::part2]),
+        // (2, [days::day2::part1, days::day2::part2]),
+        // (3, [days::day3::part1, days::day3::part2]),
+        // (4, [days::day4::part1, days::day4::part2]),
+        // (5, [days::day5::part1, days::day5::part2]),
+        // (6, [days::day6::part1, days::day6::part2]),
+        (7, [days::day7::part1, days::day7::part2]),
     ]);
     process_args(fns);
 }
