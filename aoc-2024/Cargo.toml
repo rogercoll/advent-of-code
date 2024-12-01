@@ -1,0 +1,8 @@
+[package]
+name = "aoc-2024"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+atoi = "2.0.0"
+indexmap = "2.7.0"
