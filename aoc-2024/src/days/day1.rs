@@ -10,7 +10,6 @@ pub(crate) fn part1() {
         .split(|&b| b == b'\n')
         .filter(|line| !line.is_empty())
         .map(|line| {
-            println!("{:?}", atoi::atoi::<usize>(&line[0..num_len]).unwrap());
             (
                 atoi::atoi::<usize>(&line[0..num_len]).unwrap(),
                 atoi::atoi::<usize>(&line[num_len + 3..]).unwrap(),
