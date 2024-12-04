@@ -19,23 +19,25 @@ pub(crate) fn part1() {
 
 pub(crate) fn part2() {
     let re = Regex::new(r"do\(\)|don't\(\)|mul\((\d+),(\d+)\)").unwrap();
+    let mut enabled = true;
 
     println!(
         "{}",
         re.captures_iter(include_str!("../../input/day3.txt"))
-            .fold((0, true), |(mut acc, mut enabled), capture| {
+            .filter(|capture| {
                 if capture.get(0).unwrap().as_str() == "do()" {
                     enabled = true;
+                    return false;
                 } else if capture.get(0).unwrap().as_str() == "don't()" {
                     enabled = false;
-                } else {
-                    if enabled {
-                        acc += capture.get(1).unwrap().as_str().parse::<i64>().unwrap()
-                            * capture.get(2).unwrap().as_str().parse::<i64>().unwrap()
-                    }
+                    return false;
                 }
-                (acc, enabled)
+                return enabled;
             })
-            .0
+            .map(|mul_caputre| {
+                mul_caputre.get(1).unwrap().as_str().parse::<i64>().unwrap()
+                    * mul_caputre.get(2).unwrap().as_str().parse::<i64>().unwrap()
+            })
+            .sum::<i64>()
     )
 }
