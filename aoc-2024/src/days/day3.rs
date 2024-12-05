@@ -7,11 +7,6 @@ pub(crate) fn part1() {
         .captures_iter(include_str!("../../input/day3.txt"))
         .map(|c| c.extract())
     {
-        println!(
-            "{}, {}",
-            num1.parse::<i64>().unwrap(),
-            num2.parse::<i64>().unwrap()
-        );
         movies.push(num1.parse::<i64>().unwrap() * num2.parse::<i64>().unwrap());
     }
     println!("{:?}", movies.iter().sum::<i64>());
