@@ -41,13 +41,13 @@ fn process_args(fns: IndexMap<usize, [PartFn; 2]>) {
 }
 
 fn run_specific(fns: [PartFn; 2], day: usize) {
-    println!("Day: {}", day);
+    println!("{} Day: {} {}", "🎄", day, "🎄");
     let part1_start = Instant::now();
-    println!("\tPart{}:\t", 1,);
+    print!("\t🌟 Part{}:\t", 1,);
     fns[0]();
     let part1_duration = part1_start.elapsed();
     let part2_start = Instant::now();
-    println!("\tPart{}:\t", 2,);
+    print!("\t🌟🌟 Part{}:\t", 2);
     fns[1]();
     let part2_duration = part2_start.elapsed();
     println!(
