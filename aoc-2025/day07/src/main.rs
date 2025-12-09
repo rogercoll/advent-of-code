@@ -16,10 +16,7 @@ fn part1() {
     let valid_pos =
         |x: isize, y: isize| -> bool { return x >= 0 && x < height && y >= 0 && y < width };
 
-    let mut next_pos = Vec::from([(0..map[0].len() as isize)
-        .flat_map(|x| (0..map.len() as isize).map(move |y| (x, y)))
-        .find(|(x, y)| get_val(*x, *y) == b'S')
-        .unwrap()]);
+    let mut next_pos = Vec::from([(map[0].iter().position(|&b| b == b'S').unwrap() as isize, 0)]);
 
     let mut beams = HashSet::new();
     let mut counter = 0;
@@ -47,8 +44,29 @@ fn part1() {
     println!("Part 1: {}", counter);
 }
 
-fn part2() {}
+fn part2() {
+    let map = include_bytes!("../input.txt")
+        .split(|&b| b == b'\n')
+        .filter(|line| !line.is_empty())
+        .collect::<Vec<_>>();
+
+    // fixed row length
+    let mut paths = [0; 141];
+    paths[map[0].iter().position(|&b| b == b'S').unwrap()] = 1;
+
+    for row in map[1..].iter() {
+        for (i, count) in paths.into_iter().enumerate() {
+            if row[i] == b'^' {
+                paths[i] = 0;
+                paths[i - 1] += count;
+                paths[i + 1] += count;
+            }
+        }
+    }
+    println!("Part 2: {}", paths.iter().sum::<usize>());
+}
 
 fn main() {
     part1();
+    part2();
 }
