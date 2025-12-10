@@ -1,0 +1,9 @@
+[package]
+name = "day08"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+aph_disjoint_set = "0.1.1"
+atoi = "2.0.0"
+ordered-float = "5.1.0"
